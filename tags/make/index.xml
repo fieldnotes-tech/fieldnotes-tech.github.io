@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on fieldnotes.tech</title>
-    <link>https://fieldnotes.tech/posts/</link>
-    <description>Recent content in Posts on fieldnotes.tech</description>
+    <title>Make on fieldnotes.tech</title>
+    <link>https://fieldnotes.tech/tags/make/</link>
+    <description>Recent content in Make on fieldnotes.tech</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
     <copyright>&amp;copy; Sam Salisbury 2019</copyright>
     <lastBuildDate>Sun, 03 Mar 2019 22:37:00 +0000</lastBuildDate>
     
-	<atom:link href="https://fieldnotes.tech/posts/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://fieldnotes.tech/tags/make/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -21,16 +21,6 @@
       <description>This blog is hosted on GitHub Pages and published using Hugo. Since Go is my preferred language at the moment, Hugo seemed attractive.
 There are 2 Git repos for this website:
  Source code: github.com/fieldnotes-tech/fieldnotes.tech Rendered static site: github.com/fieldnotes-tech/fieldnotes-tech.github.io  Publishing involves updating the source, and having Hugo generate the static site. To make this easier to use I&amp;rsquo;ve added a Makefile which pulls the rendered site as a submodule in the public/ directory, which is Hugo&amp;rsquo;s default place to write the rendered site.</description>
-    </item>
-    
-    <item>
-      <title>Hello World</title>
-      <link>https://fieldnotes.tech/posts/hello-world/</link>
-      <pubDate>Sun, 03 Mar 2019 09:48:12 +0000</pubDate>
-      
-      <guid>https://fieldnotes.tech/posts/hello-world/</guid>
-      <description>Hello world, welcome to fieldnotes.tech!
-Here I intend to keep my notes-to-self, code snippets, musings and other short bits &amp;amp; pieces on the subject of software engineering and tech in general. Most of what I’ll write here will be gleaned from working in the field and solving real issues as they arise. Some of it will be pretty esoteric, rough, unfinished and maybe even controversial or just plain wrong; but all will be in the spirit of earnestly trying to be better at what I do.</description>
     </item>
     
   </channel>

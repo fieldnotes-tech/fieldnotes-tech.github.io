@@ -13,6 +13,88 @@
     
     
     <item>
+      <title>Hugo Makefile</title>
+      <link>https://fieldnotes.tech/posts/hugo-makefile/</link>
+      <pubDate>Sun, 03 Mar 2019 22:37:00 +0000</pubDate>
+      <author>Sam Salisbury</author>
+      <guid>https://fieldnotes.tech/posts/hugo-makefile/</guid>
+      <description></description>
+      
+      <content>&lt;p&gt;This blog is hosted on &lt;a href=&#34;https://pages.github.com&#34;&gt;GitHub Pages&lt;/a&gt;
+and published using &lt;a href=&#34;https://gohugo.io&#34;&gt;Hugo&lt;/a&gt;.
+Since Go is my preferred language at the moment, Hugo seemed attractive.&lt;/p&gt;
+
+&lt;p&gt;There are 2 Git repos for this website:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Source code:
+&lt;a href=&#34;https://github.com/fieldnotes-tech/fieldnotes.tech&#34;&gt;github.com/fieldnotes-tech/fieldnotes.tech&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Rendered static site:
+&lt;a href=&#34;https://github.com/fieldnotes-tech/fieldnotes-tech.github.io&#34;&gt;github.com/fieldnotes-tech/fieldnotes-tech.github.io&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Publishing involves updating the source,
+and having Hugo generate the static site.
+To make this easier to use I&amp;rsquo;ve added a &lt;code&gt;Makefile&lt;/code&gt;
+which pulls the rendered site as a submodule
+in the &lt;code&gt;public/&lt;/code&gt; directory,
+which is Hugo&amp;rsquo;s default place to write the rendered site.
+It also pulls the &lt;a href=&#34;https://github.com/ribice/kiss&#34;&gt;kiss theme&lt;/a&gt;&amp;rsquo;s submodule,
+and ensures it&amp;rsquo;s set to a specific revision.
+(I don&amp;rsquo;t want to be surprised if this gets broken in some way later.)&lt;/p&gt;
+
+&lt;p&gt;This Makefile works fine on my dev machine,
+but will need some refinement for the next phase:
+having the site regenerated in CI on every push.
+Some issues that will need to be solved are:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;It presumes the &lt;code&gt;hugo&lt;/code&gt; command is already installed,&lt;/li&gt;
+&lt;li&gt;It does not assert which version of Hugo should be used.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Here is the Makefile as it stands right now&amp;hellip;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-Makefile&#34;&gt;SHELL := /usr/bin/env bash
+HUGO := hugo
+DATE := $(shell date)
+DOMAIN := fieldnotes.tech
+KISS_THEME_REVISION := 55f6f0068e8304bf7ac848e68f918912bd8d5336
+
+.PHONY: publish commit public kiss-theme submodules clean-workspace
+
+publish: commit
+	cd public &amp;amp;&amp;amp; git push origin master
+
+commit: public
+	cd public &amp;amp;&amp;amp; \
+	if git diff --exit-code; then \
+		echo &amp;quot;Nothing to commit.&amp;quot;; \
+	else \
+		git add -A &amp;amp;&amp;amp; git commit -m &amp;quot;publish: $(DATE)&amp;quot;; \
+	fi
+
+public: clean-workspace submodules kiss-theme
+	rm -rf $@/*
+	echo $(DOMAIN) &amp;gt; $@/CNAME
+	$(HUGO)
+
+kiss-theme: submodules
+	cd themes/kiss &amp;amp;&amp;amp; git reset --hard $(KISS_THEME_REVISION)
+
+submodules:
+	git submodule update --recursive --remote
+
+clean-workspace:
+	@if [ ! -z &amp;quot;$$(git status -s)&amp;quot; ]; then echo &amp;quot;[ERR] Workspace dirty.&amp;quot;; exit 1; fi
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Next up: getting this website built in CI on every push&amp;hellip;&lt;/p&gt;
+</content>
+      
+    </item>
+    
+    <item>
       <title>Hello World</title>
       <link>https://fieldnotes.tech/posts/hello-world/</link>
       <pubDate>Sun, 03 Mar 2019 09:48:12 +0000</pubDate>
