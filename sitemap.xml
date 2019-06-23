@@ -8,8 +8,21 @@
   </url>
   
   <url>
-    <loc>https://fieldnotes.tech/posts/hello-world/</loc>
-    <lastmod>2019-03-03T17:17:38+00:00</lastmod>
+    <loc>https://fieldnotes.tech/posts/</loc>
+    <lastmod>2019-03-03T23:01:55+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://fieldnotes.tech/tags/</loc>
+    <lastmod>2019-03-03T23:01:55+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://fieldnotes.tech/</loc>
+    <lastmod>2019-03-03T23:01:55+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -31,21 +44,8 @@
   </url>
   
   <url>
-    <loc>https://fieldnotes.tech/posts/</loc>
-    <lastmod>2019-03-03T23:01:55+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://fieldnotes.tech/tags/</loc>
-    <lastmod>2019-03-03T23:01:55+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://fieldnotes.tech/</loc>
-    <lastmod>2019-03-03T23:01:55+00:00</lastmod>
-    <priority>0</priority>
+    <loc>https://fieldnotes.tech/posts/hello-world/</loc>
+    <lastmod>2019-03-03T17:17:38+00:00</lastmod>
   </url>
   
 </urlset>
