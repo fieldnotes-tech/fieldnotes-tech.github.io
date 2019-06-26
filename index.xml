@@ -13,10 +13,10 @@
     
     <item>
       <title>YES/NO Boolean Env Vars</title>
-      <link>https://fieldnotes.tech/posts/yes-no-boolean-strings-in-bash/</link>
+      <link>https://fieldnotes.tech/posts/yes-no-boolean-env-vars/</link>
       <pubDate>Tue, 25 Jun 2019 00:57:00 +0000</pubDate>
       <author>Sam Salisbury</author>
-      <guid>https://fieldnotes.tech/posts/yes-no-boolean-strings-in-bash/</guid>
+      <guid>https://fieldnotes.tech/posts/yes-no-boolean-env-vars/</guid>
       <description></description>
       
       <content>&lt;p&gt;I use &lt;code&gt;YES&lt;/code&gt; and &lt;code&gt;NO&lt;/code&gt; in environment variables to store Boolean values. I have come to the conclusion that this is in some way optimal after trying all the other obvious options and finding that each has readability flaws:&lt;/p&gt;
