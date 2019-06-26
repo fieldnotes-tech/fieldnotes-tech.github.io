@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>readability on fieldnotes.tech</title>
+    <link>https://fieldnotes.tech/tags/readability/</link>
+    <description>Recent content in readability on fieldnotes.tech</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <copyright>&amp;copy; Sam Salisbury 2019</copyright>
+    <lastBuildDate>Tue, 25 Jun 2019 00:57:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://fieldnotes.tech/tags/readability/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>YES/NO Boolean Env Vars</title>
+      <link>https://fieldnotes.tech/posts/yes-no-boolean-strings-in-bash/</link>
+      <pubDate>Tue, 25 Jun 2019 00:57:00 +0000</pubDate>
+      
+      <guid>https://fieldnotes.tech/posts/yes-no-boolean-strings-in-bash/</guid>
+      <description>I use YES and NO in environment variables to store Boolean values. I have come to the conclusion that this is in some way optimal after trying all the other obvious options and finding that each has readability flaws:
+ 0 and 1 are confusing in POSIX shells like bash, because return 0 and exit 0 usually mean &amp;ldquo;success&amp;rdquo; (the command did not fail) which we think of as truthy. Likewise, 1 or any other non-zero number is treated as failure in these contexts, which intuitively feels falseish.</description>
+    </item>
+    
+  </channel>
+</rss>
