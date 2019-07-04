@@ -14,30 +14,30 @@
     
     <item>
       <title>How to SHELL for compatible Makefiles</title>
-      <link>https://fieldnotes.tech/posts/how-to-shell-for-compatible-makefiles/</link>
+      <link>https://fieldnotes.tech/how-to-shell-for-compatible-makefiles/</link>
       <pubDate>Thu, 04 Jul 2019 08:56:00 +0000</pubDate>
       
-      <guid>https://fieldnotes.tech/posts/how-to-shell-for-compatible-makefiles/</guid>
+      <guid>https://fieldnotes.tech/how-to-shell-for-compatible-makefiles/</guid>
       <description>The upshot is if you care about maximum compatibility with different versions of GNU Make, don&amp;rsquo;t use .SHELLFLAGS just put all your args in-line in the SHELL variable, and make sure to always always use -c as your last argument. E.g. for bash in &amp;ldquo;strict mode&amp;rdquo;
 SHELL := /usr/bin/env bash -euo pipefail -c  But why? I really care about the out of the box development experience on projects I maintain.</description>
     </item>
     
     <item>
       <title>YES/NO Boolean Env Vars</title>
-      <link>https://fieldnotes.tech/posts/yes-no-boolean-env-vars/</link>
+      <link>https://fieldnotes.tech/yes-no-boolean-env-vars/</link>
       <pubDate>Tue, 25 Jun 2019 00:57:00 +0000</pubDate>
       
-      <guid>https://fieldnotes.tech/posts/yes-no-boolean-env-vars/</guid>
+      <guid>https://fieldnotes.tech/yes-no-boolean-env-vars/</guid>
       <description>I use YES and NO in environment variables to store Boolean values. I have come to the conclusion that this is in some way optimal after trying all the other obvious options and finding that each has readability flaws:
  0 and 1 are confusing in POSIX shells like bash, because return 0 and exit 0 usually mean &amp;ldquo;success&amp;rdquo; (the command did not fail) which we think of as truthy. Likewise, 1 or any other non-zero number is treated as failure in these contexts, which intuitively feels falseish.</description>
     </item>
     
     <item>
       <title>Hugo Makefile</title>
-      <link>https://fieldnotes.tech/posts/hugo-makefile/</link>
+      <link>https://fieldnotes.tech/hugo-makefile/</link>
       <pubDate>Sun, 03 Mar 2019 22:37:00 +0000</pubDate>
       
-      <guid>https://fieldnotes.tech/posts/hugo-makefile/</guid>
+      <guid>https://fieldnotes.tech/hugo-makefile/</guid>
       <description>This blog is hosted on GitHub Pages and published using Hugo. Since Go is my preferred language at the moment, Hugo seemed attractive.
 There are 2 Git repos for this website:
  Source code: github.com/fieldnotes-tech/fieldnotes.tech Rendered static site: github.com/fieldnotes-tech/fieldnotes-tech.github.io  Publishing involves updating the source, and having Hugo generate the static site. To make this easier to use I&amp;rsquo;ve added a Makefile which pulls the rendered site as a submodule in the public/ directory, which is Hugo&amp;rsquo;s default place to write the rendered site.</description>
@@ -45,10 +45,10 @@ There are 2 Git repos for this website:
     
     <item>
       <title>Hello World</title>
-      <link>https://fieldnotes.tech/posts/hello-world/</link>
+      <link>https://fieldnotes.tech/hello-world/</link>
       <pubDate>Sun, 03 Mar 2019 09:48:12 +0000</pubDate>
       
-      <guid>https://fieldnotes.tech/posts/hello-world/</guid>
+      <guid>https://fieldnotes.tech/hello-world/</guid>
       <description>Hello world, welcome to fieldnotes.tech!
 Here I intend to keep my notes-to-self, code snippets, musings and other short bits &amp;amp; pieces on the subject of software engineering and tech in general. Most of what I’ll write here will be gleaned from working in the field and solving real issues as they arise. Some of it will be pretty esoteric, rough, unfinished and maybe even controversial or just plain wrong; but all will be in the spirit of earnestly trying to be better at what I do.</description>
     </item>

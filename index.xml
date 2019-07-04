@@ -13,10 +13,10 @@
     
     <item>
       <title>How to SHELL for compatible Makefiles</title>
-      <link>https://fieldnotes.tech/posts/how-to-shell-for-compatible-makefiles/</link>
+      <link>https://fieldnotes.tech/how-to-shell-for-compatible-makefiles/</link>
       <pubDate>Thu, 04 Jul 2019 08:56:00 +0000</pubDate>
       <author>Sam Salisbury</author>
-      <guid>https://fieldnotes.tech/posts/how-to-shell-for-compatible-makefiles/</guid>
+      <guid>https://fieldnotes.tech/how-to-shell-for-compatible-makefiles/</guid>
       <description></description>
       
       <content>
@@ -70,10 +70,10 @@ Happy Making!&lt;/p&gt;
     
     <item>
       <title>YES/NO Boolean Env Vars</title>
-      <link>https://fieldnotes.tech/posts/yes-no-boolean-env-vars/</link>
+      <link>https://fieldnotes.tech/yes-no-boolean-env-vars/</link>
       <pubDate>Tue, 25 Jun 2019 00:57:00 +0000</pubDate>
       <author>Sam Salisbury</author>
-      <guid>https://fieldnotes.tech/posts/yes-no-boolean-env-vars/</guid>
+      <guid>https://fieldnotes.tech/yes-no-boolean-env-vars/</guid>
       <description></description>
       
       <content>&lt;p&gt;I use &lt;code&gt;YES&lt;/code&gt; and &lt;code&gt;NO&lt;/code&gt; in environment variables to store Boolean values. I have come to the conclusion that this is in some way optimal after trying all the other obvious options and finding that each has readability flaws:&lt;/p&gt;
@@ -103,10 +103,10 @@ fi
     
     <item>
       <title>Hugo Makefile</title>
-      <link>https://fieldnotes.tech/posts/hugo-makefile/</link>
+      <link>https://fieldnotes.tech/hugo-makefile/</link>
       <pubDate>Sun, 03 Mar 2019 22:37:00 +0000</pubDate>
       <author>Sam Salisbury</author>
-      <guid>https://fieldnotes.tech/posts/hugo-makefile/</guid>
+      <guid>https://fieldnotes.tech/hugo-makefile/</guid>
       <description></description>
       
       <content>&lt;p&gt;This blog is hosted on &lt;a href=&#34;https://pages.github.com&#34;&gt;GitHub Pages&lt;/a&gt;
@@ -185,10 +185,10 @@ clean-workspace:
     
     <item>
       <title>Hello World</title>
-      <link>https://fieldnotes.tech/posts/hello-world/</link>
+      <link>https://fieldnotes.tech/hello-world/</link>
       <pubDate>Sun, 03 Mar 2019 09:48:12 +0000</pubDate>
       <author>Sam Salisbury</author>
-      <guid>https://fieldnotes.tech/posts/hello-world/</guid>
+      <guid>https://fieldnotes.tech/hello-world/</guid>
       <description></description>
       
       <content>&lt;p&gt;Hello world, welcome to fieldnotes.tech!&lt;/p&gt;

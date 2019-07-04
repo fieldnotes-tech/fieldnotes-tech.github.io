@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  lang="en-gb">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>How to SHELL for compatible Makefiles | fieldnotes.tech</title>
+
+<meta property='og:title' content='How to SHELL for compatible Makefiles - fieldnotes.tech'>
+<meta property='og:description' content='The upshot is if you care about maximum compatibility with different versions of GNU Make, don&rsquo;t use .SHELLFLAGS just put all your args in-line in the SHELL variable, and make sure to always always use -c as your last argument. E.g. for bash in &ldquo;strict mode&rdquo;
+SHELL := /usr/bin/env bash -euo pipefail -c  But why? I really care about the out of the box development experience on projects I maintain.'>
+<meta property='og:url' content='https://fieldnotes.tech/how-to-shell-for-compatible-makefiles/'>
+<meta property='og:site_name' content='fieldnotes.tech'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts'><meta property='article:tag' content='make'><meta property='article:tag' content='pragmatism'><meta property='article:tag' content='bash'><meta property='article:published_time' content='2019-07-04T08:56:00Z'/><meta property='article:modified_time' content='2019-07-04T11:48:42&#43;01:00'/><meta name='twitter:card' content='summary'><meta name='twitter:site' content='@'><meta name='twitter:creator' content='@'>
+
+
+<link href="https://fieldnotes.tech/index.xml" rel="alternate" type="application/rss+xml" title="fieldnotes.tech" />
+
+<link rel="stylesheet" href="/css/style.css"/><link rel='stylesheet' href='https://fieldnotes.tech/css/custom.css'><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+</head>
+<body>
+<section class="section">
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="https://fieldnotes.tech">
+          <h1 class="title is-4"><img id="site-logo" alt="yellow notebook" src="/favicon-32x32.png" width="24" height="24" />fieldnotes.tech</h1>
+        </a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile"><a class="level-item" aria-label="github" href='https://github.com/samsalisbury'
+            target='_blank' rel='noopener'>
+            <span class="icon">
+              <i class><svg viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+    
+  </svg></i>
+            </span>
+          </a><a class="level-item" aria-label="rss" href='/index.html'
+            target='_blank' rel='noopener'>
+            <span class="icon">
+              <i class><svg viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    <path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle>
+    
+  </svg></i>
+            </span>
+          </a></nav>
+      </div>
+    </nav>
+
+    <nav class="nav">
+      
+
+      
+    </nav>
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="subtitle tags is-6 is-pulled-right">
+      
+      
+<a class="subtitle is-6" href="/tags/make">#make</a>
+
+
+
+  
+  | <a class="subtitle is-6" href="/tags/pragmatism">#pragmatism</a>
+  
+  | <a class="subtitle is-6" href="/tags/bash">#bash</a>
+  
+
+      
+    </div>
+    <h2 class="subtitle is-6">July 4, 2019</h2>
+    <h1 class="title">How to SHELL for compatible Makefiles</h1>
+    
+    <div class="content">
+      
+
+<p>The upshot is if you care about maximum compatibility with different versions of GNU Make,
+don&rsquo;t use <code>.SHELLFLAGS</code> just put all your args in-line in the <code>SHELL</code> variable,
+and make sure to always always use <code>-c</code> as your last argument.
+E.g. for bash in &ldquo;strict mode&rdquo;</p>
+
+<pre><code class="language-Makefile">SHELL := /usr/bin/env bash -euo pipefail -c
+</code></pre>
+
+<h2 id="but-why">But why?</h2>
+
+<p>I really care about the out of the box development experience on projects I maintain.
+For me, this currently means ensuring that you can at least
+build and run tests on vanilla macOS and GNU/Linux distros,
+without having to upgrade standard tools like, for example, <code>make</code>.</p>
+
+<p>Currently, macOS Mojave ships with <code>GNU Make 3.81</code>, from 2006.
+Most modern GNU/Linux distros ship with GNU Make 4+,
+<code>GNU Make 4.2.1</code> from 2016 being the latest at time of writing.</p>
+
+<p>In those 10 years, breaking changes were made to the handling of the <code>SHELL</code> variable itself,
+and a new special variable called <code>.SHELLFLAGS</code> was introduced:</p>
+
+<ul>
+<li>Make 4+ no longer auto-inserts the <code>-c</code> flag for your <code>SHELL</code> variable, resulting in very confusing output if you forget to add it.</li>
+<li>Make 4- does not recognise the <code>.SHELLFLAGS</code> variable at all, so we can&rsquo;t use it.</li>
+</ul>
+
+<p>These are all perfectly logical steps
+to make Make more versatile and enable handling of different shells
+outside of POSIX-conforming shells like
+sh, dash, ash and bash.
+However this spread of versions encountered in the wild
+means we need to find a middle way,
+not strictly adhering to guidance about placing too many args in your shebang line
+(<code>SHELL</code> is not actually a shebang line, it just looks a bit like one),
+but rather discovering what works in practice and applying that.</p>
+
+<p>The conclusion?
+Put your shell executable and all of its flags in the <code>SHELL</code> variable,
+and don&rsquo;t forget to add <code>-c</code>, or your shell-of-choice&rsquo;s equivalent flag, right at the end.
+Happy Making!</p>
+
+<p>Have I missed something here? Is there a better way? Let me know in the comments!</p>
+
+      
+      <div class="related">
+
+<h3>Similar articles:</h3>
+<ul>
+	
+	<li><a href="/yes-no-boolean-env-vars/">YES/NO Boolean Env Vars</a></li>
+	
+	<li><a href="/hugo-makefile/">Hugo Makefile</a></li>
+	
+</ul>
+</div>
+      
+    </div>
+    
+  </div>
+</section>
+
+
+<section class="section">
+
+<script src="https://utteranc.es/client.js"
+        repo="fieldnotes-tech/fieldnotes.tech"
+        issue-term="pathname"
+        label="comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+
+  <div class="container has-text-centered">
+    <p>&copy; Sam Salisbury 2019
+    
+      | <a href="https://github.com/fieldnotes-tech/fieldnotes.tech/commit/be3831a202f30309e7c4074c96d0f40e46935f4d">be3831a</a></p>
+    
+    
+    
+  </div>
+</section>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-135580398-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
+</body>
+</html>
+

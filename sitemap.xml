@@ -3,83 +3,83 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://fieldnotes.tech/posts/how-to-shell-for-compatible-makefiles/</loc>
-    <lastmod>2019-07-04T11:31:23+01:00</lastmod>
+    <loc>https://fieldnotes.tech/how-to-shell-for-compatible-makefiles/</loc>
+    <lastmod>2019-07-04T11:48:42+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://fieldnotes.tech/posts/</loc>
-    <lastmod>2019-07-04T11:31:23+01:00</lastmod>
+    <lastmod>2019-07-04T11:48:42+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://fieldnotes.tech/tags/</loc>
-    <lastmod>2019-07-04T11:31:23+01:00</lastmod>
+    <lastmod>2019-07-04T11:48:42+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://fieldnotes.tech/tags/bash/</loc>
-    <lastmod>2019-07-04T11:31:23+01:00</lastmod>
+    <lastmod>2019-07-04T11:48:42+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://fieldnotes.tech/</loc>
-    <lastmod>2019-07-04T11:31:23+01:00</lastmod>
+    <lastmod>2019-07-04T11:48:42+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://fieldnotes.tech/tags/make/</loc>
-    <lastmod>2019-07-04T11:31:23+01:00</lastmod>
+    <lastmod>2019-07-04T11:48:42+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://fieldnotes.tech/tags/pragmatism/</loc>
-    <lastmod>2019-07-04T11:31:23+01:00</lastmod>
+    <lastmod>2019-07-04T11:48:42+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://fieldnotes.tech/posts/yes-no-boolean-env-vars/</loc>
-    <lastmod>2019-06-26T23:41:40+01:00</lastmod>
+    <loc>https://fieldnotes.tech/yes-no-boolean-env-vars/</loc>
+    <lastmod>2019-07-04T11:48:42+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://fieldnotes.tech/tags/nitpick/</loc>
-    <lastmod>2019-06-26T23:41:40+01:00</lastmod>
+    <lastmod>2019-07-04T11:48:42+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://fieldnotes.tech/tags/readability/</loc>
-    <lastmod>2019-06-26T23:41:40+01:00</lastmod>
+    <lastmod>2019-07-04T11:48:42+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://fieldnotes.tech/posts/hugo-makefile/</loc>
-    <lastmod>2019-03-03T23:01:55+00:00</lastmod>
+    <loc>https://fieldnotes.tech/hugo-makefile/</loc>
+    <lastmod>2019-07-04T11:48:42+01:00</lastmod>
   </url>
   
   <url>
     <loc>https://fieldnotes.tech/tags/hugo/</loc>
-    <lastmod>2019-03-03T23:01:55+00:00</lastmod>
+    <lastmod>2019-07-04T11:48:42+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://fieldnotes.tech/tags/meta/</loc>
-    <lastmod>2019-03-03T23:01:55+00:00</lastmod>
+    <lastmod>2019-07-04T11:48:42+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://fieldnotes.tech/posts/hello-world/</loc>
-    <lastmod>2019-03-03T17:17:38+00:00</lastmod>
+    <loc>https://fieldnotes.tech/hello-world/</loc>
+    <lastmod>2019-07-04T11:48:42+01:00</lastmod>
   </url>
   
 </urlset>
