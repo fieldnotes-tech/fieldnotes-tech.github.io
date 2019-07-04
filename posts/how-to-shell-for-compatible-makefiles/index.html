@@ -11,7 +11,7 @@
 SHELL := /usr/bin/env bash -euo pipefail -c  But why? I really care about the out of the box development experience on projects I maintain.'>
 <meta property='og:url' content='https://fieldnotes.tech/posts/how-to-shell-for-compatible-makefiles/'>
 <meta property='og:site_name' content='fieldnotes.tech'>
-<meta property='og:type' content='article'><meta property='article:section' content='Posts'><meta property='article:tag' content='make'><meta property='article:tag' content='pragmatism'><meta property='article:tag' content='bash'><meta property='article:published_time' content='2019-07-04T08:56:00Z'/><meta property='article:modified_time' content='2019-07-04T11:28:47&#43;01:00'/><meta name='twitter:card' content='summary'><meta name='twitter:site' content='@'><meta name='twitter:creator' content='@'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts'><meta property='article:tag' content='make'><meta property='article:tag' content='pragmatism'><meta property='article:tag' content='bash'><meta property='article:published_time' content='2019-07-04T08:56:00Z'/><meta property='article:modified_time' content='2019-07-04T11:31:23&#43;01:00'/><meta name='twitter:card' content='summary'><meta name='twitter:site' content='@'><meta name='twitter:creator' content='@'>
 
 
 <link href="https://fieldnotes.tech/index.xml" rel="alternate" type="application/rss+xml" title="fieldnotes.tech" />
@@ -111,7 +111,7 @@ Most modern GNU/Linux distros ship with GNU Make 4+,
 and a new special variable called <code>.SHELLFLAGS</code> was introduced:</p>
 
 <ul>
-<li>Make 4+ no longer auto-inserts the <code>-c</code> flag for your <code>SHELL</code> variable, resulting in very confusing output (see below) if you forget to add it.</li>
+<li>Make 4+ no longer auto-inserts the <code>-c</code> flag for your <code>SHELL</code> variable, resulting in very confusing output if you forget to add it.</li>
 <li>Make 4- does not recognise the <code>.SHELLFLAGS</code> variable at all, so we can&rsquo;t use it.</li>
 </ul>
 
@@ -165,7 +165,7 @@ Happy Making!</p>
   <div class="container has-text-centered">
     <p>&copy; Sam Salisbury 2019
     
-      | <a href="https://github.com/fieldnotes-tech/fieldnotes.tech/commit/08d39687f8cc2c19dd1d8b9de4b2e64c2427c144">08d3968</a></p>
+      | <a href="https://github.com/fieldnotes-tech/fieldnotes.tech/commit/b8636ecf295aa8e100f9317b2b49843899b7672f">b8636ec</a></p>
     
     
     
