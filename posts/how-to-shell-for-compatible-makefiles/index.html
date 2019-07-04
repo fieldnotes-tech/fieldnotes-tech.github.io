@@ -4,15 +4,14 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<title>How to set the SHELL variable in your Makefile | fieldnotes.tech</title>
+<title>How to SHELL for compatible Makefiles | fieldnotes.tech</title>
 
-<meta property='og:title' content='How to set the SHELL variable in your Makefile - fieldnotes.tech'>
-<meta property='og:description' content='tl;dr if you care about maximum compatibility with different versions of GNU Make, don&rsquo;t use .SHELLARGS just put all your args in-line in the SHELL variable, and make sure to always always use -c as your last argument.
-E.g. for bash in &ldquo;strict mode&rdquo;
-SHELL := /usr/bin/env bash -euo pipefail -c  But why? I really care about the out of the box development experience on projects I maintain. For me, this currently means ensuring that you can at least build and run tests on vanilla macOS and LTS GNU/Linux distros, without having to upgrade standard tools like, for example, make.'>
-<meta property='og:url' content='https://fieldnotes.tech/posts/how-to-set-the-shell-variable-in-your-makefile/'>
+<meta property='og:title' content='How to SHELL for compatible Makefiles - fieldnotes.tech'>
+<meta property='og:description' content='The upshot is if you care about maximum compatibility with different versions of GNU Make, don&rsquo;t use .SHELLFLAGS just put all your args in-line in the SHELL variable, and make sure to always always use -c as your last argument. E.g. for bash in &ldquo;strict mode&rdquo;
+SHELL := /usr/bin/env bash -euo pipefail -c  But why? I really care about the out of the box development experience on projects I maintain.'>
+<meta property='og:url' content='https://fieldnotes.tech/posts/how-to-shell-for-compatible-makefiles/'>
 <meta property='og:site_name' content='fieldnotes.tech'>
-<meta property='og:type' content='article'><meta property='article:section' content='Posts'><meta property='article:tag' content='make'><meta property='article:tag' content='pragmatism'><meta property='article:tag' content='bash'><meta property='article:published_time' content='2019-07-04T08:56:00Z'/><meta property='article:modified_time' content='2019-07-04T11:12:54&#43;01:00'/><meta name='twitter:card' content='summary'><meta name='twitter:site' content='@'><meta name='twitter:creator' content='@'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts'><meta property='article:tag' content='make'><meta property='article:tag' content='pragmatism'><meta property='article:tag' content='bash'><meta property='article:published_time' content='2019-07-04T08:56:00Z'/><meta property='article:modified_time' content='2019-07-04T11:28:47&#43;01:00'/><meta name='twitter:card' content='summary'><meta name='twitter:site' content='@'><meta name='twitter:creator' content='@'>
 
 
 <link href="https://fieldnotes.tech/index.xml" rel="alternate" type="application/rss+xml" title="fieldnotes.tech" />
@@ -84,34 +83,52 @@ SHELL := /usr/bin/env bash -euo pipefail -c  But why? I really care about the ou
       
     </div>
     <h2 class="subtitle is-6">July 4, 2019</h2>
-    <h1 class="title">How to set the SHELL variable in your Makefile</h1>
+    <h1 class="title">How to SHELL for compatible Makefiles</h1>
     
     <div class="content">
       
 
-<p>tl;dr if you care about maximum compatibility with different versions of GNU Make, don&rsquo;t use <code>.SHELLARGS</code> just put all your args in-line in the <code>SHELL</code> variable, and make sure to always always use <code>-c</code> as your last argument.</p>
-
-<p>E.g. for bash in &ldquo;strict mode&rdquo;</p>
+<p>The upshot is if you care about maximum compatibility with different versions of GNU Make,
+don&rsquo;t use <code>.SHELLFLAGS</code> just put all your args in-line in the <code>SHELL</code> variable,
+and make sure to always always use <code>-c</code> as your last argument.
+E.g. for bash in &ldquo;strict mode&rdquo;</p>
 
 <pre><code class="language-Makefile">SHELL := /usr/bin/env bash -euo pipefail -c
 </code></pre>
 
 <h2 id="but-why">But why?</h2>
 
-<p>I really care about the out of the box development experience on projects I maintain. For me, this currently means ensuring that you can at least build and run tests on vanilla macOS and LTS GNU/Linux distros, without having to upgrade standard tools like, for example, <code>make</code>.</p>
+<p>I really care about the out of the box development experience on projects I maintain.
+For me, this currently means ensuring that you can at least
+build and run tests on vanilla macOS and GNU/Linux distros,
+without having to upgrade standard tools like, for example, <code>make</code>.</p>
 
-<p>Currently, macOS Mojave ships with GNU Make 3.81, from 2006. Most modern GNU/Linux distros ship with GNU Make 4+. GNU Make 4.2.1 from 2016 being the latest at time of writing.</p>
+<p>Currently, macOS Mojave ships with <code>GNU Make 3.81</code>, from 2006.
+Most modern GNU/Linux distros ship with GNU Make 4+,
+<code>GNU Make 4.2.1</code> from 2016 being the latest at time of writing.</p>
 
-<p>In those 10 years, breaking changes were made to the handling of the <code>SHELL</code> variable itself, and a new special variable called <code>.SHELLARGS</code> was introduced:</p>
+<p>In those 10 years, breaking changes were made to the handling of the <code>SHELL</code> variable itself,
+and a new special variable called <code>.SHELLFLAGS</code> was introduced:</p>
 
 <ul>
 <li>Make 4+ no longer auto-inserts the <code>-c</code> flag for your <code>SHELL</code> variable, resulting in very confusing output (see below) if you forget to add it.</li>
-<li>Make 4- does not recognise the <code>.SHELLARGS</code> variable at all, so we can&rsquo;t use it.</li>
+<li>Make 4- does not recognise the <code>.SHELLFLAGS</code> variable at all, so we can&rsquo;t use it.</li>
 </ul>
 
-<p>These are all perfectly logical steps to make Make more versatile and enable handling of different shells outside of strict POSIX shells like sh, dash, ash and bash. However this spread of versions encountered in the wild means we need to find a middle way, not strictly adhering to guidance about placing too many args in your shebang line (this is not actually a shebang line, it just looks like one), but rather discovering what works in practice and applying that.</p>
+<p>These are all perfectly logical steps
+to make Make more versatile and enable handling of different shells
+outside of POSIX-conforming shells like
+sh, dash, ash and bash.
+However this spread of versions encountered in the wild
+means we need to find a middle way,
+not strictly adhering to guidance about placing too many args in your shebang line
+(<code>SHELL</code> is not actually a shebang line, it just looks a bit like one),
+but rather discovering what works in practice and applying that.</p>
 
-<p>The conclusion? Put your shell executable and all of its flags in the <code>SHELL</code> variable, and don&rsquo;t forget to add <code>-c</code>, or your shell-of-choice&rsquo;s equivalent flag, right at the end. Happy Making!</p>
+<p>The conclusion?
+Put your shell executable and all of its flags in the <code>SHELL</code> variable,
+and don&rsquo;t forget to add <code>-c</code>, or your shell-of-choice&rsquo;s equivalent flag, right at the end.
+Happy Making!</p>
 
 <p>Have I missed something here? Is there a better way? Let me know in the comments!</p>
 
@@ -148,7 +165,7 @@ SHELL := /usr/bin/env bash -euo pipefail -c  But why? I really care about the ou
   <div class="container has-text-centered">
     <p>&copy; Sam Salisbury 2019
     
-      | <a href="https://github.com/fieldnotes-tech/fieldnotes.tech/commit/42d5f363de187f06e83ad88d128ff6af0aaa7a05">42d5f36</a></p>
+      | <a href="https://github.com/fieldnotes-tech/fieldnotes.tech/commit/08d39687f8cc2c19dd1d8b9de4b2e64c2427c144">08d3968</a></p>
     
     
     

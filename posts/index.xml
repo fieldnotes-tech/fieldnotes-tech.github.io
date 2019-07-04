@@ -13,14 +13,13 @@
     
     
     <item>
-      <title>How to set the SHELL variable in your Makefile</title>
-      <link>https://fieldnotes.tech/posts/how-to-set-the-shell-variable-in-your-makefile/</link>
+      <title>How to SHELL for compatible Makefiles</title>
+      <link>https://fieldnotes.tech/posts/how-to-shell-for-compatible-makefiles/</link>
       <pubDate>Thu, 04 Jul 2019 08:56:00 +0000</pubDate>
       
-      <guid>https://fieldnotes.tech/posts/how-to-set-the-shell-variable-in-your-makefile/</guid>
-      <description>tl;dr if you care about maximum compatibility with different versions of GNU Make, don&amp;rsquo;t use .SHELLARGS just put all your args in-line in the SHELL variable, and make sure to always always use -c as your last argument.
-E.g. for bash in &amp;ldquo;strict mode&amp;rdquo;
-SHELL := /usr/bin/env bash -euo pipefail -c  But why? I really care about the out of the box development experience on projects I maintain. For me, this currently means ensuring that you can at least build and run tests on vanilla macOS and LTS GNU/Linux distros, without having to upgrade standard tools like, for example, make.</description>
+      <guid>https://fieldnotes.tech/posts/how-to-shell-for-compatible-makefiles/</guid>
+      <description>The upshot is if you care about maximum compatibility with different versions of GNU Make, don&amp;rsquo;t use .SHELLFLAGS just put all your args in-line in the SHELL variable, and make sure to always always use -c as your last argument. E.g. for bash in &amp;ldquo;strict mode&amp;rdquo;
+SHELL := /usr/bin/env bash -euo pipefail -c  But why? I really care about the out of the box development experience on projects I maintain.</description>
     </item>
     
     <item>
