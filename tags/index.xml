@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
     <copyright>&amp;copy; Sam Salisbury 2019</copyright>
-    <lastBuildDate>Tue, 25 Jun 2019 00:57:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 04 Jul 2019 08:56:00 +0000</lastBuildDate>
     
 	<atom:link href="https://fieldnotes.tech/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -15,9 +15,27 @@
     <item>
       <title>bash</title>
       <link>https://fieldnotes.tech/tags/bash/</link>
-      <pubDate>Tue, 25 Jun 2019 00:57:00 +0000</pubDate>
+      <pubDate>Thu, 04 Jul 2019 08:56:00 +0000</pubDate>
       
       <guid>https://fieldnotes.tech/tags/bash/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>make</title>
+      <link>https://fieldnotes.tech/tags/make/</link>
+      <pubDate>Thu, 04 Jul 2019 08:56:00 +0000</pubDate>
+      
+      <guid>https://fieldnotes.tech/tags/make/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>pragmatism</title>
+      <link>https://fieldnotes.tech/tags/pragmatism/</link>
+      <pubDate>Thu, 04 Jul 2019 08:56:00 +0000</pubDate>
+      
+      <guid>https://fieldnotes.tech/tags/pragmatism/</guid>
       <description></description>
     </item>
     
@@ -45,15 +63,6 @@
       <pubDate>Sun, 03 Mar 2019 22:37:00 +0000</pubDate>
       
       <guid>https://fieldnotes.tech/tags/hugo/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>make</title>
-      <link>https://fieldnotes.tech/tags/make/</link>
-      <pubDate>Sun, 03 Mar 2019 22:37:00 +0000</pubDate>
-      
-      <guid>https://fieldnotes.tech/tags/make/</guid>
       <description></description>
     </item>
     

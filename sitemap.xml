@@ -3,32 +3,49 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://fieldnotes.tech/posts/how-to-set-the-shell-variable-in-your-makefile/</loc>
+    <lastmod>2019-07-04T11:12:54+01:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://fieldnotes.tech/posts/</loc>
-    <lastmod>2019-06-26T23:41:40+01:00</lastmod>
+    <lastmod>2019-07-04T11:12:54+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://fieldnotes.tech/tags/</loc>
-    <lastmod>2019-06-26T23:41:40+01:00</lastmod>
+    <lastmod>2019-07-04T11:12:54+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://fieldnotes.tech/tags/bash/</loc>
+    <lastmod>2019-07-04T11:12:54+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://fieldnotes.tech/</loc>
+    <lastmod>2019-07-04T11:12:54+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://fieldnotes.tech/tags/make/</loc>
+    <lastmod>2019-07-04T11:12:54+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://fieldnotes.tech/tags/pragmatism/</loc>
+    <lastmod>2019-07-04T11:12:54+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://fieldnotes.tech/posts/yes-no-boolean-env-vars/</loc>
     <lastmod>2019-06-26T23:41:40+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://fieldnotes.tech/tags/bash/</loc>
-    <lastmod>2019-06-26T23:41:40+01:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://fieldnotes.tech/</loc>
-    <lastmod>2019-06-26T23:41:40+01:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -50,12 +67,6 @@
   
   <url>
     <loc>https://fieldnotes.tech/tags/hugo/</loc>
-    <lastmod>2019-03-03T23:01:55+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://fieldnotes.tech/tags/make/</loc>
     <lastmod>2019-03-03T23:01:55+00:00</lastmod>
     <priority>0</priority>
   </url>

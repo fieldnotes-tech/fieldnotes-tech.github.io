@@ -10,7 +10,7 @@
 <meta property='og:description' content=''>
 <meta property='og:url' content='https://fieldnotes.tech/tags/bash/'>
 <meta property='og:site_name' content='fieldnotes.tech'>
-<meta property='og:type' content='website'><meta property='article:section' content='Tags'><meta property='og:updated_time' content='2019-06-26T23:41:40&#43;01:00'/><meta name='twitter:card' content='summary'><meta name='twitter:site' content='@'><meta name='twitter:creator' content='@'>
+<meta property='og:type' content='website'><meta property='article:section' content='Tags'><meta property='og:updated_time' content='2019-07-04T11:12:54&#43;01:00'/><meta name='twitter:card' content='summary'><meta name='twitter:site' content='@'><meta name='twitter:creator' content='@'>
 
 
 <link href="https://fieldnotes.tech/index.xml" rel="alternate" type="application/rss+xml" title="fieldnotes.tech" />
@@ -67,6 +67,36 @@
 <section class="section">
   <div class="container">
     
+    
+    <article>
+      <div class="subtitle tags is-6 is-pulled-right">
+        
+        
+<a class="subtitle is-6" href="/tags/make">#make</a>
+
+
+
+  
+  | <a class="subtitle is-6" href="/tags/pragmatism">#pragmatism</a>
+  
+  | <a class="subtitle is-6" href="/tags/bash">#bash</a>
+  
+
+        
+      </div>
+      <h2 class="subtitle is-6">July 4, 2019</h2>
+      <h1 class="title"><a href="https://fieldnotes.tech/posts/how-to-set-the-shell-variable-in-your-makefile/">How to set the SHELL variable in your Makefile</a></h1>
+      <div class="content">
+        tl;dr if you care about maximum compatibility with different versions of GNU Make, don&rsquo;t use .SHELLARGS just put all your args in-line in the SHELL variable, and make sure to always always use -c as your last argument.
+E.g. for bash in &ldquo;strict mode&rdquo;
+SHELL := /usr/bin/env bash -euo pipefail -c  But why? I really care about the out of the box development experience on projects I maintain. For me, this currently means ensuring that you can at least build and run tests on vanilla macOS and LTS GNU/Linux distros, without having to upgrade standard tools like, for example, make.
+        
+        <a class="button is-link" href="https://fieldnotes.tech/posts/how-to-set-the-shell-variable-in-your-makefile/" style="height:28px">
+          Read more
+        </a>
+        
+      </div>
+    </article>
     
     <article>
       <div class="subtitle tags is-6 is-pulled-right">
