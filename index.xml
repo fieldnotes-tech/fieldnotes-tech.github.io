@@ -12,6 +12,23 @@
     
     
     <item>
+      <title>Multi-File CircleCI Config</title>
+      <link>https://fieldnotes.tech/circleci-multi-file-config/</link>
+      <pubDate>Tue, 16 Jul 2019 21:21:00 +0000</pubDate>
+      <author>Sam Salisbury</author>
+      <guid>https://fieldnotes.tech/circleci-multi-file-config/</guid>
+      <description></description>
+      
+      <content>&lt;p&gt;CircleCI configuration for complex projects can grow very large. By default you have to store all that configuration in a single &lt;code&gt;.circleci/config.yml&lt;/code&gt; which quickly gets unmanageable. Compounded with that, is that if you are using the on-prem CircleCI Enterprise, you are limited to using CircleCI 2.0 syntax, which is missing some really useful code reuse features like Commands, Executors and Orbs.&lt;/p&gt;
+
+&lt;p&gt;I was frustrated by these problems on a recent project with complex CI requirements, so, with a little nudge by a colleague who knew the CircleCI CLI inside out, I came up with a solution&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;If you just want to use it, head over to  &lt;a href=&#34;https://github.com/samsalisbury/circleci-multi-file-config&#34;&gt;https://github.com/samsalisbury/circleci-multi-file-config&lt;/a&gt; where you&amp;rsquo;ll see all the instructions you need to get started. If you are interested in the nitty gritty, then please subscribe to this blog and I will post a more detailed breakdown soon.&lt;/p&gt;
+</content>
+      
+    </item>
+    
+    <item>
       <title>How to SHELL for compatible Makefiles</title>
       <link>https://fieldnotes.tech/how-to-shell-for-compatible-makefiles/</link>
       <pubDate>Thu, 04 Jul 2019 08:56:00 +0000</pubDate>
