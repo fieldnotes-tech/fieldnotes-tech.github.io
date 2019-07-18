@@ -11,7 +11,7 @@
  0 and 1 are confusing in POSIX shells like bash, because return 0 and exit 0 usually mean &ldquo;success&rdquo; (the command did not fail) which we think of as truthy. Likewise, 1 or any other non-zero number is treated as failure in these contexts, which intuitively feels falseish.'>
 <meta property='og:url' content='https://fieldnotes.tech/yes-no-boolean-env-vars/'>
 <meta property='og:site_name' content='fieldnotes.tech'>
-<meta property='og:type' content='article'><meta property='article:section' content='Posts'><meta property='article:tag' content='nitpick'><meta property='article:tag' content='readability'><meta property='article:tag' content='bash'><meta property='article:published_time' content='2019-06-25T00:57:00Z'/><meta property='article:modified_time' content='2019-07-04T11:48:42&#43;01:00'/><meta name='twitter:card' content='summary'><meta name='twitter:site' content='@'><meta name='twitter:creator' content='@'>
+<meta property='og:type' content='article'><meta property='article:section' content='Posts'><meta property='article:tag' content='nitpick'><meta property='article:tag' content='readability'><meta property='article:tag' content='bash'><meta property='article:published_time' content='2019-06-25T00:57:00Z'/><meta property='article:modified_time' content='2019-07-18T17:14:15&#43;01:00'/><meta name='twitter:card' content='summary'><meta name='twitter:site' content='@'><meta name='twitter:creator' content='@'>
 
 
 <link href="https://fieldnotes.tech/index.xml" rel="alternate" type="application/rss+xml" title="fieldnotes.tech" />
@@ -91,11 +91,11 @@
 <ul>
 <li><code>0</code> and <code>1</code> are confusing in POSIX shells like bash, because <code>return 0</code> and <code>exit 0</code> usually mean &ldquo;success&rdquo; (the command did not fail) which we think of as truthy. Likewise, <code>1</code> or any other non-zero number is treated as failure in these contexts, which intuitively feels falseish. Most other programming languages like C treat <code>0</code> as false and <code>1</code> as true. Potential confusion abounds.</li>
 <li><code>true</code> and <code>false</code> (strings) both work, and are not too bad. However there are shell builtin functions with these same names, which can occasionally be confusing. Why entertain that risk?!</li>
-<li>The empty or nonempty string is pretty bad. If you arbitrarily set it to <code>true</code>, <code>1</code> or <code>YES</code> to be nonempty, then you can guarantee someone will try setting it to <code>false</code>, <code>0</code> or <code>NO</code>, and be gravely disappointed at the result.</li>
-<li>The set or not set variable is the worst of all worlds. It inherits the same issues as the empty or nonempty string, but has some extra quirks all of its own. Unsetting a variable in your own interactive shell isn&rsquo;t that bad <code>unset VAR</code> and you&rsquo;re done. However, passing that command down through a stack of Makefiles, scripts, Docker run invocations etc is impossible. Some might try to be clever and set the var to empty, but it doesn&rsquo;t work. Time to get editing that stack of turtles. Be kind, give your users a knob they can use at a distance.</li>
+<li>The <em>empty</em> or <em>nonempty</em> string is pretty bad. If you arbitrarily set it to <code>true</code>, <code>1</code> or <code>YES</code> to be nonempty, then you can guarantee someone will try setting it to <code>false</code>, <code>0</code> or <code>NO</code>, and be gravely disappointed at the result.</li>
+<li>The <em>set</em> or <em>not set</em> variable is the worst of all worlds. It inherits the same issues as the empty or nonempty string, but has some extra quirks all of its own. Unsetting a variable in your own interactive shell isn&rsquo;t that bad <code>unset VAR</code> and you&rsquo;re done. However, passing that command down through a stack of Makefiles, scripts, Docker run invocations etc is impossible. Some might try to be clever and set the var to empty, but it doesn&rsquo;t work. Time to get editing that stack of turtles. Be kind, give your users a knob they can use at a distance.</li>
 </ul>
 
-<p>YES and NO cannot be confused with shell builtins, or implicit integer conversations to bools, and the words map rather intuitively to true and false respectively.</p>
+<p><code>YES</code> and <code>NO</code> cannot be confused with shell builtins, or implicit integer conversations to bools, and the words map rather intuitively to true and false respectively.</p>
 
 <p>The comparison I usually use in practice is:</p>
 
@@ -104,9 +104,11 @@
 fi
 </code></pre>
 
-<p>Completely ignoring the potential <code>NO</code> value, treating anything that&rsquo;s not <code>YES</code> as false. Coupling this with default false values  for options dictated by env vars usually makes this safe. If you really need a decision to have been made (i.e. it is not safe to default to false) then you might want to fail if it&rsquo;s not set explicitly to <code>YES</code> or <code>NO</code>.</p>
+<p>Completely ignoring the potential <code>NO</code> value, treating anything that&rsquo;s not <code>YES</code> as false. Coupling this with default false values for options dictated by env vars usually makes this safe. If you really need a decision to have been made (i.e. it is not safe to default to false) then you might want to fail if it&rsquo;s not set explicitly to <code>YES</code> or <code>NO</code>.</p>
 
-<p>So, after many years of writing and maintaining software, I have come to the firm belief that environment variables indicating the Boolean True or False should be stored in environment variables as <code>YES</code> or <code>NO</code> respectively. This simply sidesteps many potential readability and usability downsides with the other methods. You can be as strict as you like with casing, or ignoring/handling malformed values, but default to YES/NO and stop confusing yourself and others. (Well, me anyway.)</p>
+<p>Using <code>YES</code> and <code>NO</code> simply sidesteps many potential readability and usability downsides with the other methods.</p>
+
+<p>Am I right or am I wrong? Let me know in the comments!</p>
 
       
       <div class="related">
@@ -132,7 +134,7 @@ fi
   <div class="container has-text-centered">
     <p>&copy; Sam Salisbury 2019
     
-      | <a href="https://github.com/fieldnotes-tech/fieldnotes.tech/commit/be3831a202f30309e7c4074c96d0f40e46935f4d">be3831a</a></p>
+      | <a href="https://github.com/fieldnotes-tech/fieldnotes.tech/commit/6d4b4e96e0eb972e7edf7d3344c8b810498606be">6d4b4e9</a></p>
     
     
     
