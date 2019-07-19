@@ -1,92 +1,54 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"  lang="en-gb">
+<html>
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>YES/NO Boolean Env Vars | fieldnotes.tech</title>
+    <title>YES/NO Boolean Env Vars | fieldnotes.tech</title>
 
-<meta property='og:title' content='YES/NO Boolean Env Vars - fieldnotes.tech'>
-<meta property='og:description' content='I use YES and NO in environment variables to store Boolean values. I have come to the conclusion that this is in some way optimal after trying all the other obvious options and finding that each has readability flaws:
- 0 and 1 are confusing in POSIX shells like bash, because return 0 and exit 0 usually mean &ldquo;success&rdquo; (the command did not fail) which we think of as truthy. Likewise, 1 or any other non-zero number is treated as failure in these contexts, which intuitively feels falseish.'>
-<meta property='og:url' content='https://fieldnotes.tech/yes-no-boolean-env-vars/'>
-<meta property='og:site_name' content='fieldnotes.tech'>
-<meta property='og:type' content='article'><meta property='article:section' content='Posts'><meta property='article:tag' content='nitpick'><meta property='article:tag' content='readability'><meta property='article:tag' content='bash'><meta property='article:published_time' content='2019-06-25T00:57:00Z'/><meta property='article:modified_time' content='2019-07-18T17:14:15&#43;01:00'/><meta name='twitter:card' content='summary'><meta name='twitter:site' content='@'><meta name='twitter:creator' content='@'>
+    <style>body{margin:40px auto;max-width:650px;line-height:1.6;font-size:18px;color:#444;padding:0 10px}h1,h2,h3{line-height:1.2}div.header h1{padding-top:0;padding-bottom:8px;margin-bottom:24px;font-size:18px;font-weight:400;border-bottom:1px solid}.header-menu{float:right}ul.pagination{list-style-type:none;text-align:center;padding:0}ul.pagination>li{padding:0 8px;display:inline-block}div.footer{border-top:1px solid;text-align:center}img{max-width:100%;max-height:100%;display:block;margin-left:auto;margin-right:auto}</style>
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-135580398-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
 
 
-<link href="https://fieldnotes.tech/index.xml" rel="alternate" type="application/rss+xml" title="fieldnotes.tech" />
-
-<link rel="stylesheet" href="/css/style.css"/><link rel='stylesheet' href='https://fieldnotes.tech/css/custom.css'><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-<meta name="msapplication-TileColor" content="#da532c">
-<meta name="theme-color" content="#ffffff">
+    
 </head>
+
 <body>
-<section class="section">
-  <div class="container">
-    <nav class="nav">
-      <div class="nav-left">
-        <a class="nav-item" href="https://fieldnotes.tech">
-          <h1 class="title is-4"><img id="site-logo" alt="yellow notebook" src="/favicon-32x32.png" width="24" height="24" />fieldnotes.tech</h1>
-        </a>
-      </div>
-      <div class="nav-right">
-        <nav class="nav-item level is-mobile"><a class="level-item" aria-label="github" href='https://github.com/samsalisbury'
-            target='_blank' rel='noopener'>
-            <span class="icon">
-              <i class><svg viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+<div class="header">
+    <h1>
+        <a href="/">fieldnotes.tech</a>
+        <div class="header-menu">
+        </div>
+    </h1>
+</div>
+<div id="content">
+
+<header>
+    <h1>YES/NO Boolean Env Vars</h1>
     
-    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
-    
-  </svg></i>
-            </span>
-          </a><a class="level-item" aria-label="rss" href='/index.html'
-            target='_blank' rel='noopener'>
-            <span class="icon">
-              <i class><svg viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
-    
-    <path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle>
-    
-  </svg></i>
-            </span>
-          </a></nav>
-      </div>
-    </nav>
 
-    <nav class="nav">
-      
-
-      
-    </nav>
-
-  </div>
-</section>
-
-<section class="section">
-  <div class="container">
-    <div class="subtitle tags is-6 is-pulled-right">
-      
-      
-<a class="subtitle is-6" href="/tags/nitpick">#nitpick</a>
-
-
-
-  
-  | <a class="subtitle is-6" href="/tags/readability">#readability</a>
-  
-  | <a class="subtitle is-6" href="/tags/bash">#bash</a>
-  
-
-      
-    </div>
-    <h2 class="subtitle is-6">June 25, 2019</h2>
-    <h1 class="title">YES/NO Boolean Env Vars</h1>
-    
-    <div class="content">
-      <p>I use <code>YES</code> and <code>NO</code> in environment variables to store Boolean values. I have come to the conclusion that this is in some way optimal after trying all the other obvious options and finding that each has readability flaws:</p>
+<div class="post-meta">
+    Date &#x5b;
+    <time datetime="2019-06-25">Jun 25, 2019</time>
+    &#x5d;
+    Tags &#x5b;
+    <a href="https://fieldnotes.tech/tags/nitpick/">nitpick</a>
+    <a href="https://fieldnotes.tech/tags/readability/">readability</a>
+    <a href="https://fieldnotes.tech/tags/bash/">bash</a>
+    &#x5d;
+</div>
+</header>
+<article>
+    <p>I use <code>YES</code> and <code>NO</code> in environment variables to store Boolean values. I have come to the conclusion that this is in some way optimal after trying all the other obvious options and finding that each has readability flaws:</p>
 
 <ul>
 <li><code>0</code> and <code>1</code> are confusing in POSIX shells like bash, because <code>return 0</code> and <code>exit 0</code> usually mean &ldquo;success&rdquo; (the command did not fail) which we think of as truthy. Likewise, <code>1</code> or any other non-zero number is treated as failure in these contexts, which intuitively feels falseish. Most other programming languages like C treat <code>0</code> as false and <code>1</code> as true. Potential confusion abounds.</li>
@@ -110,52 +72,19 @@ fi
 
 <p>Am I right or am I wrong? Let me know in the comments!</p>
 
-      
-      <div class="related">
-</div>
-      
+</article>
+
+
     </div>
-    
-  </div>
-</section>
-
-
-<section class="section">
-
-<script src="https://utteranc.es/client.js"
-        repo="fieldnotes-tech/fieldnotes.tech"
-        issue-term="pathname"
-        label="comment"
-        theme="github-light"
-        crossorigin="anonymous"
-        async>
-</script>
-
-  <div class="container has-text-centered">
-    <p>&copy; Sam Salisbury 2019
-    
-      | <a href="https://github.com/fieldnotes-tech/fieldnotes.tech/commit/6d4b4e96e0eb972e7edf7d3344c8b810498606be">6d4b4e9</a></p>
+<div class="footer">
     
     
+
     
-  </div>
-</section>
-
-
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-135580398-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
-
-
-
-
+    
+    <div class="copyright">&amp;copy; Sam Salisbury 2019</div>
+    
+</div>
 </body>
-</html>
 
+</html>
