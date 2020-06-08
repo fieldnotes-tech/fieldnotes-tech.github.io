@@ -13,218 +13,28 @@
     
     
     <item>
-      <title>Multi-File CircleCI Config</title>
-      <link>https://fieldnotes.tech/circleci-multi-file-config/</link>
+      <title>About fieldnotes.tech</title>
+      <link>https://fieldnotes.tech/about/</link>
+      <pubDate>Fri, 19 Jul 2019 22:29:00 +0000</pubDate>
+      <author>Sam Salisbury</author>
+      <guid>https://fieldnotes.tech/about/</guid>
+      <description></description>
+      
+      <content>&lt;p&gt;&lt;a href=&#34;https://circleci.com/gh/fieldnotes-tech/fieldnotes.tech&#34;&gt;&lt;img src=&#34;https://circleci.com/gh/fieldnotes-tech/fieldnotes.tech.svg?style=svg&#34; alt=&#34;CircleCI&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;This website contains my personal field notes gleaned from working as a technical generalist. From designing an building large applications to implementing coding workflows, team collaboration, and everything else I get stuck into at work.&lt;/p&gt;
+</content>
+      
+    </item>
+    
+    <item>
+      <title>Posts</title>
+      <link>https://fieldnotes.tech/posts/</link>
       <pubDate>Tue, 16 Jul 2019 21:21:00 +0000</pubDate>
       <author>Sam Salisbury</author>
-      <guid>https://fieldnotes.tech/circleci-multi-file-config/</guid>
+      <guid>https://fieldnotes.tech/posts/</guid>
       <description></description>
       
-      <content>&lt;p&gt;CircleCI configuration for complex projects can grow very large. By default you have to store all that configuration in a single &lt;code&gt;.circleci/config.yml&lt;/code&gt; which quickly gets unmanageable. Compounded with that, is that if you are using the on-prem CircleCI Enterprise, you are limited to using CircleCI 2.0 syntax, which is missing some really useful code reuse features like Commands, Executors and Orbs.&lt;/p&gt;
-
-&lt;p&gt;I was frustrated by these problems on a recent project with complex CI requirements, so, with a little nudge by a colleague who knew the CircleCI CLI inside out, I came up with a solution&amp;hellip;&lt;/p&gt;
-
-&lt;p&gt;If you just want to use it, head over to  &lt;a href=&#34;https://github.com/samsalisbury/circleci-multi-file-config&#34;&gt;https://github.com/samsalisbury/circleci-multi-file-config&lt;/a&gt; where you&amp;rsquo;ll see all the instructions you need to get started. If you are interested in the nitty gritty, then please subscribe to this blog and I will post a more detailed breakdown soon.&lt;/p&gt;
-</content>
-      
-    </item>
-    
-    <item>
-      <title>How to SHELL for compatible Makefiles</title>
-      <link>https://fieldnotes.tech/how-to-shell-for-compatible-makefiles/</link>
-      <pubDate>Thu, 04 Jul 2019 08:56:00 +0000</pubDate>
-      <author>Sam Salisbury</author>
-      <guid>https://fieldnotes.tech/how-to-shell-for-compatible-makefiles/</guid>
-      <description></description>
-      
-      <content>
-
-&lt;p&gt;The upshot is if you care about maximum compatibility with different versions of GNU Make,
-don&amp;rsquo;t use &lt;code&gt;.SHELLFLAGS&lt;/code&gt; just put all your args in-line in the &lt;code&gt;SHELL&lt;/code&gt; variable,
-and make sure to always always use &lt;code&gt;-c&lt;/code&gt; as your last argument.
-E.g. for bash in &amp;ldquo;strict mode&amp;rdquo;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-Makefile&#34;&gt;SHELL := /usr/bin/env bash -euo pipefail -c
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;but-why&#34;&gt;But why?&lt;/h2&gt;
-
-&lt;p&gt;I really care about the out of the box development experience on projects I maintain.
-For me, this currently means ensuring that you can at least
-build and run tests on vanilla macOS and GNU/Linux distros,
-without having to upgrade standard tools like, for example, &lt;code&gt;make&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Currently, macOS Mojave ships with &lt;code&gt;GNU Make 3.81&lt;/code&gt;, from 2006.
-Most modern GNU/Linux distros ship with GNU Make 4+,
-&lt;code&gt;GNU Make 4.2.1&lt;/code&gt; from 2016 being the latest at time of writing.&lt;/p&gt;
-
-&lt;p&gt;In those 10 years, breaking changes were made to the handling of the &lt;code&gt;SHELL&lt;/code&gt; variable itself,
-and a new special variable called &lt;code&gt;.SHELLFLAGS&lt;/code&gt; was introduced:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Make 4+ no longer auto-inserts the &lt;code&gt;-c&lt;/code&gt; flag for your &lt;code&gt;SHELL&lt;/code&gt; variable, resulting in very confusing output if you forget to add it.&lt;/li&gt;
-&lt;li&gt;Make 4- does not recognise the &lt;code&gt;.SHELLFLAGS&lt;/code&gt; variable at all, so we can&amp;rsquo;t use it.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;These are all perfectly logical steps
-to make Make more versatile and enable handling of different shells
-outside of POSIX-conforming shells like
-sh, dash, ash and bash.
-However this spread of versions encountered in the wild
-means we need to find a middle way,
-not strictly adhering to guidance about placing too many args in your shebang line
-(&lt;code&gt;SHELL&lt;/code&gt; is not actually a shebang line, it just looks a bit like one),
-but rather discovering what works in practice and applying that.&lt;/p&gt;
-
-&lt;p&gt;The conclusion?
-Put your shell executable and all of its flags in the &lt;code&gt;SHELL&lt;/code&gt; variable,
-and don&amp;rsquo;t forget to add &lt;code&gt;-c&lt;/code&gt;, or your shell-of-choice&amp;rsquo;s equivalent flag, right at the end.
-Happy Making!&lt;/p&gt;
-
-&lt;p&gt;Have I missed something here? Is there a better way? Let me know in the comments!&lt;/p&gt;
-</content>
-      
-    </item>
-    
-    <item>
-      <title>YES/NO Boolean Env Vars</title>
-      <link>https://fieldnotes.tech/yes-no-boolean-env-vars/</link>
-      <pubDate>Tue, 25 Jun 2019 00:57:00 +0000</pubDate>
-      <author>Sam Salisbury</author>
-      <guid>https://fieldnotes.tech/yes-no-boolean-env-vars/</guid>
-      <description></description>
-      
-      <content>&lt;p&gt;I use &lt;code&gt;YES&lt;/code&gt; and &lt;code&gt;NO&lt;/code&gt; in environment variables to store Boolean values. I have come to the conclusion that this is in some way optimal after trying all the other obvious options and finding that each has readability flaws:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;0&lt;/code&gt; and &lt;code&gt;1&lt;/code&gt; are confusing in POSIX shells like bash, because &lt;code&gt;return 0&lt;/code&gt; and &lt;code&gt;exit 0&lt;/code&gt; usually mean &amp;ldquo;success&amp;rdquo; (the command did not fail) which we think of as truthy. Likewise, &lt;code&gt;1&lt;/code&gt; or any other non-zero number is treated as failure in these contexts, which intuitively feels falseish. Most other programming languages like C treat &lt;code&gt;0&lt;/code&gt; as false and &lt;code&gt;1&lt;/code&gt; as true. Potential confusion abounds.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;true&lt;/code&gt; and &lt;code&gt;false&lt;/code&gt; (strings) both work, and are not too bad. However there are shell builtin functions with these same names, which can occasionally be confusing. Why entertain that risk?!&lt;/li&gt;
-&lt;li&gt;The &lt;em&gt;empty&lt;/em&gt; or &lt;em&gt;nonempty&lt;/em&gt; string is pretty bad. If you arbitrarily set it to &lt;code&gt;true&lt;/code&gt;, &lt;code&gt;1&lt;/code&gt; or &lt;code&gt;YES&lt;/code&gt; to be nonempty, then you can guarantee someone will try setting it to &lt;code&gt;false&lt;/code&gt;, &lt;code&gt;0&lt;/code&gt; or &lt;code&gt;NO&lt;/code&gt;, and be gravely disappointed at the result.&lt;/li&gt;
-&lt;li&gt;The &lt;em&gt;set&lt;/em&gt; or &lt;em&gt;not set&lt;/em&gt; variable is the worst of all worlds. It inherits the same issues as the empty or nonempty string, but has some extra quirks all of its own. Unsetting a variable in your own interactive shell isn&amp;rsquo;t that bad &lt;code&gt;unset VAR&lt;/code&gt; and you&amp;rsquo;re done. However, passing that command down through a stack of Makefiles, scripts, Docker run invocations etc is impossible. Some might try to be clever and set the var to empty, but it doesn&amp;rsquo;t work. Time to get editing that stack of turtles. Be kind, give your users a knob they can use at a distance.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;code&gt;YES&lt;/code&gt; and &lt;code&gt;NO&lt;/code&gt; cannot be confused with shell builtins, or implicit integer conversations to bools, and the words map rather intuitively to true and false respectively.&lt;/p&gt;
-
-&lt;p&gt;The comparison I usually use in practice is:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;if [ $VAR = YES ]; then
-  echo You said yes!
-fi
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Completely ignoring the potential &lt;code&gt;NO&lt;/code&gt; value, treating anything that&amp;rsquo;s not &lt;code&gt;YES&lt;/code&gt; as false. Coupling this with default false values for options dictated by env vars usually makes this safe. If you really need a decision to have been made (i.e. it is not safe to default to false) then you might want to fail if it&amp;rsquo;s not set explicitly to &lt;code&gt;YES&lt;/code&gt; or &lt;code&gt;NO&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Using &lt;code&gt;YES&lt;/code&gt; and &lt;code&gt;NO&lt;/code&gt; simply sidesteps many potential readability and usability downsides with the other methods.&lt;/p&gt;
-
-&lt;p&gt;Am I right or am I wrong? Let me know in the comments!&lt;/p&gt;
-</content>
-      
-    </item>
-    
-    <item>
-      <title>Hugo Makefile</title>
-      <link>https://fieldnotes.tech/hugo-makefile/</link>
-      <pubDate>Sun, 03 Mar 2019 22:37:00 +0000</pubDate>
-      <author>Sam Salisbury</author>
-      <guid>https://fieldnotes.tech/hugo-makefile/</guid>
-      <description></description>
-      
-      <content>&lt;p&gt;This blog is hosted on &lt;a href=&#34;https://pages.github.com&#34;&gt;GitHub Pages&lt;/a&gt;
-and published using &lt;a href=&#34;https://gohugo.io&#34;&gt;Hugo&lt;/a&gt;.
-Since Go is my preferred language at the moment, Hugo seemed attractive.&lt;/p&gt;
-
-&lt;p&gt;There are 2 Git repos for this website:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Source code:
-&lt;a href=&#34;https://github.com/fieldnotes-tech/fieldnotes.tech&#34;&gt;github.com/fieldnotes-tech/fieldnotes.tech&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Rendered static site:
-&lt;a href=&#34;https://github.com/fieldnotes-tech/fieldnotes-tech.github.io&#34;&gt;github.com/fieldnotes-tech/fieldnotes-tech.github.io&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Publishing involves updating the source,
-and having Hugo generate the static site.
-To make this easier to use I&amp;rsquo;ve added a &lt;code&gt;Makefile&lt;/code&gt;
-which pulls the rendered site as a submodule
-in the &lt;code&gt;public/&lt;/code&gt; directory,
-which is Hugo&amp;rsquo;s default place to write the rendered site.
-It also pulls the &lt;a href=&#34;https://github.com/ribice/kiss&#34;&gt;kiss theme&lt;/a&gt;&amp;rsquo;s submodule,
-and ensures it&amp;rsquo;s set to a specific revision.
-(I don&amp;rsquo;t want to be surprised if this gets broken in some way later.)&lt;/p&gt;
-
-&lt;p&gt;This Makefile works fine on my dev machine,
-but will need some refinement for the next phase:
-having the site regenerated in CI on every push.
-Some issues that will need to be solved are:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;It presumes the &lt;code&gt;hugo&lt;/code&gt; command is already installed,&lt;/li&gt;
-&lt;li&gt;It does not assert which version of Hugo should be used.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Here is the Makefile as it stands right now&amp;hellip;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-Makefile&#34;&gt;SHELL := /usr/bin/env bash
-HUGO := hugo
-DATE := $(shell date)
-DOMAIN := fieldnotes.tech
-KISS_THEME_REVISION := 55f6f0068e8304bf7ac848e68f918912bd8d5336
-
-.PHONY: publish commit public kiss-theme submodules clean-workspace
-
-publish: commit
-	cd public &amp;amp;&amp;amp; git push origin master
-
-commit: public
-	cd public &amp;amp;&amp;amp; \
-	if git diff --exit-code; then \
-		echo &amp;quot;Nothing to commit.&amp;quot;; \
-	else \
-		git add -A &amp;amp;&amp;amp; git commit -m &amp;quot;publish: $(DATE)&amp;quot;; \
-	fi
-
-public: clean-workspace submodules kiss-theme
-	rm -rf $@/*
-	echo $(DOMAIN) &amp;gt; $@/CNAME
-	$(HUGO)
-
-kiss-theme: submodules
-	cd themes/kiss &amp;amp;&amp;amp; git reset --hard $(KISS_THEME_REVISION)
-
-submodules:
-	git submodule update --recursive --remote
-
-clean-workspace:
-	@if [ ! -z &amp;quot;$$(git status -s)&amp;quot; ]; then echo &amp;quot;[ERR] Workspace dirty.&amp;quot;; exit 1; fi
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Next up: getting this website built in CI on every push&amp;hellip;&lt;/p&gt;
-</content>
-      
-    </item>
-    
-    <item>
-      <title>Hello World</title>
-      <link>https://fieldnotes.tech/hello-world/</link>
-      <pubDate>Sun, 03 Mar 2019 09:48:12 +0000</pubDate>
-      <author>Sam Salisbury</author>
-      <guid>https://fieldnotes.tech/hello-world/</guid>
-      <description></description>
-      
-      <content>&lt;p&gt;Hello world, welcome to fieldnotes.tech!&lt;/p&gt;
-
-&lt;p&gt;Here I intend to keep my notes-to-self, code snippets, musings
-and other short bits &amp;amp; pieces on the subject of software engineering
-and tech in general.
-Most of what I’ll write here will be gleaned from working in the field
-and solving real issues as they arise.
-Some of it will be pretty esoteric, rough, unfinished
-and maybe even controversial or just plain wrong;
-but all will be in the spirit of earnestly trying to be better at what I do.&lt;/p&gt;
-
-&lt;p&gt;With all these commitments and boring earnestness out of the way,
-let&amp;rsquo;s see what it becomes!&lt;/p&gt;
-</content>
+      <content></content>
       
     </item>
     
