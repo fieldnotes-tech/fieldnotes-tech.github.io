@@ -90,64 +90,73 @@ There are 2 Git repos for this website:
       <p>This blog is hosted on <a href="https://pages.github.com">GitHub Pages</a>
 and published using <a href="https://gohugo.io">Hugo</a>.
 Since Go is my preferred language at the moment, Hugo seemed attractive.</p>
+
 <p>There are 2 Git repos for this website:</p>
+
 <ul>
 <li>Source code:
 <a href="https://github.com/fieldnotes-tech/fieldnotes.tech">github.com/fieldnotes-tech/fieldnotes.tech</a></li>
 <li>Rendered static site:
 <a href="https://github.com/fieldnotes-tech/fieldnotes-tech.github.io">github.com/fieldnotes-tech/fieldnotes-tech.github.io</a></li>
 </ul>
+
 <p>Publishing involves updating the source,
 and having Hugo generate the static site.
 To make this easier to use I&rsquo;ve added a <code>Makefile</code>
 which pulls the rendered site as a submodule
 in the <code>public/</code> directory,
 which is Hugo&rsquo;s default place to write the rendered site.
-It also pulls the <a href="https://github.com/ribice/kiss">kiss theme</a>&lsquo;s submodule,
+It also pulls the <a href="https://github.com/ribice/kiss">kiss theme</a>&rsquo;s submodule,
 and ensures it&rsquo;s set to a specific revision.
 (I don&rsquo;t want to be surprised if this gets broken in some way later.)</p>
+
 <p>This Makefile works fine on my dev machine,
 but will need some refinement for the next phase:
 having the site regenerated in CI on every push.
 Some issues that will need to be solved are:</p>
+
 <ul>
 <li>It presumes the <code>hugo</code> command is already installed,</li>
 <li>It does not assert which version of Hugo should be used.</li>
 </ul>
+
 <p>Here is the Makefile as it stands right now&hellip;</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Makefile" data-lang="Makefile">SHELL <span style="color:#f92672">:=</span> /usr/bin/env bash
-HUGO <span style="color:#f92672">:=</span> hugo
-DATE <span style="color:#f92672">:=</span> <span style="color:#66d9ef">$(</span>shell date<span style="color:#66d9ef">)</span>
-DOMAIN <span style="color:#f92672">:=</span> fieldnotes.tech
-KISS_THEME_REVISION <span style="color:#f92672">:=</span> 55f6f0068e8304bf7ac848e68f918912bd8d5336
 
-<span style="color:#a6e22e">.PHONY</span><span style="color:#f92672">:</span> publish commit public kiss-theme submodules clean-workspace
+<pre><code class="language-Makefile">SHELL := /usr/bin/env bash
+HUGO := hugo
+DATE := $(shell date)
+DOMAIN := fieldnotes.tech
+KISS_THEME_REVISION := 55f6f0068e8304bf7ac848e68f918912bd8d5336
 
-<span style="color:#a6e22e">publish</span><span style="color:#f92672">:</span> commit
-	cd public <span style="color:#f92672">&amp;&amp;</span> git push origin master
+.PHONY: publish commit public kiss-theme submodules clean-workspace
 
-<span style="color:#a6e22e">commit</span><span style="color:#f92672">:</span> public
-	cd public <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>	<span style="color:#66d9ef">if</span> git diff --exit-code; <span style="color:#66d9ef">then</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>		echo <span style="color:#e6db74">&#34;Nothing to commit.&#34;</span>; <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>	<span style="color:#66d9ef">else</span> <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>		git add -A <span style="color:#f92672">&amp;&amp;</span> git commit -m <span style="color:#e6db74">&#34;publish: </span><span style="color:#66d9ef">$(</span>DATE<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>; <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>	<span style="color:#66d9ef">fi</span>
+publish: commit
+	cd public &amp;&amp; git push origin master
 
-<span style="color:#a6e22e">public</span><span style="color:#f92672">:</span> clean-workspace submodules kiss-theme
+commit: public
+	cd public &amp;&amp; \
+	if git diff --exit-code; then \
+		echo &quot;Nothing to commit.&quot;; \
+	else \
+		git add -A &amp;&amp; git commit -m &quot;publish: $(DATE)&quot;; \
+	fi
+
+public: clean-workspace submodules kiss-theme
 	rm -rf $@/*
-	echo <span style="color:#66d9ef">$(</span>DOMAIN<span style="color:#66d9ef">)</span> &gt; $@/CNAME
-	<span style="color:#66d9ef">$(</span>HUGO<span style="color:#66d9ef">)</span>
+	echo $(DOMAIN) &gt; $@/CNAME
+	$(HUGO)
 
-<span style="color:#a6e22e">kiss-theme</span><span style="color:#f92672">:</span> submodules
-	cd themes/kiss <span style="color:#f92672">&amp;&amp;</span> git reset --hard <span style="color:#66d9ef">$(</span>KISS_THEME_REVISION<span style="color:#66d9ef">)</span>
+kiss-theme: submodules
+	cd themes/kiss &amp;&amp; git reset --hard $(KISS_THEME_REVISION)
 
-<span style="color:#a6e22e">submodules</span><span style="color:#f92672">:</span>
+submodules:
 	git submodule update --recursive --remote
 
-<span style="color:#a6e22e">clean-workspace</span><span style="color:#f92672">:</span>
-	@if <span style="color:#f92672">[</span> ! -z <span style="color:#e6db74">&#34;</span>$$<span style="color:#e6db74">(git status -s)&#34;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span> echo <span style="color:#e6db74">&#34;[ERR] Workspace dirty.&#34;</span>; exit 1; <span style="color:#66d9ef">fi</span>
-</code></pre></div><p>Next up: getting this website built in CI on every push&hellip;</p>
+clean-workspace:
+	@if [ ! -z &quot;$$(git status -s)&quot; ]; then echo &quot;[ERR] Workspace dirty.&quot;; exit 1; fi
+</code></pre>
+
+<p>Next up: getting this website built in CI on every push&hellip;</p>
 
       
       <div class="related">
