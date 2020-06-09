@@ -32,8 +32,7 @@
       <guid>https://fieldnotes.tech/about/</guid>
       <description></description>
       
-      <content>&lt;p&gt;&lt;a href=&#34;https://circleci.com/gh/fieldnotes-tech/fieldnotes.tech&#34;&gt;&lt;img src=&#34;https://circleci.com/gh/fieldnotes-tech/fieldnotes.tech.svg?style=svg&#34; alt=&#34;CircleCI&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
-
+      <content>&lt;p&gt;&lt;a href=&#34;https://circleci.com/gh/fieldnotes-tech/fieldnotes.tech&#34;&gt;&lt;img src=&#34;https://circleci.com/gh/fieldnotes-tech/fieldnotes.tech.svg?style=svg&#34; alt=&#34;CircleCI&#34;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;This website contains my personal field notes gleaned from working as a technical generalist. From designing an building large applications to implementing coding workflows, team collaboration, and everything else I get stuck into at work.&lt;/p&gt;
 </content>
       

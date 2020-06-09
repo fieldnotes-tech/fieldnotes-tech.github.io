@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>solved on fieldnotes.tech</title>
@@ -19,7 +19,7 @@
       
       <guid>https://fieldnotes.tech/fix-mac-bluetooth-problems/</guid>
       <description>Solved problems with bluetooth audio crackling, cutting out and disconnecting, on MacBook Pro by running this:
-sudo defaults write /Library/Preferences/com.apple.airport.bt.plist bluetoothCoexMgmt Hybrid  </description>
+sudo defaults write /Library/Preferences/com.apple.airport.bt.plist bluetoothCoexMgmt Hybrid </description>
     </item>
     
   </channel>
