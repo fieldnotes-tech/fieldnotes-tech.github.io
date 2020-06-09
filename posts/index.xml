@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on fieldnotes.tech</title>
@@ -7,10 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
     <copyright>&amp;copy; Sam Salisbury 2019</copyright>
-    <lastBuildDate>Tue, 16 Jul 2019 21:21:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 08 Jun 2020 16:21:00 +0000</lastBuildDate>
     
 	<atom:link href="https://fieldnotes.tech/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Fix Macbook Pro Unstable Bluetooth</title>
+      <link>https://fieldnotes.tech/fix-mac-bluetooth-problems/</link>
+      <pubDate>Mon, 08 Jun 2020 16:21:00 +0000</pubDate>
+      
+      <guid>https://fieldnotes.tech/fix-mac-bluetooth-problems/</guid>
+      <description>Solved problems with bluetooth audio crackling, cutting out and disconnecting, on MacBook Pro by running this:
+sudo defaults write /Library/Preferences/com.apple.airport.bt.plist bluetoothCoexMgmt Hybrid  </description>
+    </item>
     
     <item>
       <title>Multi-File CircleCI Config</title>
@@ -29,7 +39,7 @@ I was frustrated by these problems on a recent project with complex CI requireme
       
       <guid>https://fieldnotes.tech/how-to-shell-for-compatible-makefiles/</guid>
       <description>The upshot is if you care about maximum compatibility with different versions of GNU Make, don&amp;rsquo;t use .SHELLFLAGS just put all your args in-line in the SHELL variable, and make sure to always always use -c as your last argument. E.g. for bash in &amp;ldquo;strict mode&amp;rdquo;
-SHELL := /usr/bin/env bash -euo pipefail -c But why? I really care about the out of the box development experience on projects I maintain. For me, this currently means ensuring that you can at least build and run tests on vanilla macOS and GNU/Linux distros, without having to upgrade standard tools like, for example, make.</description>
+SHELL := /usr/bin/env bash -euo pipefail -c  But why? I really care about the out of the box development experience on projects I maintain.</description>
     </item>
     
     <item>
