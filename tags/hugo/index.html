@@ -72,6 +72,118 @@
       <div class="subtitle tags is-6 is-pulled-right">
         
         
+<a class="subtitle is-6" href="/tags/mac">#mac</a>
+
+
+
+  
+  | <a class="subtitle is-6" href="/tags/bluetooth">#bluetooth</a>
+  
+  | <a class="subtitle is-6" href="/tags/solved">#solved</a>
+  
+
+        
+      </div>
+      <h2 class="subtitle is-6">June 8, 2020</h2>
+      <h1 class="title"><a href="https://fieldnotes.tech/fix-mac-bluetooth-problems/">Fix Macbook Pro Unstable Bluetooth</a></h1>
+      <div class="content">
+        Solved problems with bluetooth audio crackling, cutting out and disconnecting, on MacBook Pro by running this:
+sudo defaults write /Library/Preferences/com.apple.airport.bt.plist bluetoothCoexMgmt Hybrid 
+        
+      </div>
+    </article>
+    
+    <article>
+      <div class="subtitle tags is-6 is-pulled-right">
+        
+        
+<a class="subtitle is-6" href="/tags/circleci">#circleci</a>
+
+
+
+  
+  | <a class="subtitle is-6" href="/tags/workflow">#workflow</a>
+  
+  | <a class="subtitle is-6" href="/tags/make">#make</a>
+  
+
+        
+      </div>
+      <h2 class="subtitle is-6">July 16, 2019</h2>
+      <h1 class="title"><a href="https://fieldnotes.tech/circleci-multi-file-config/">Multi-File CircleCI Config</a></h1>
+      <div class="content">
+        CircleCI configuration for complex projects can grow very large. By default you have to store all that configuration in a single .circleci/config.yml which quickly gets unmanageable. Compounded with that, is that if you are using the on-prem CircleCI Enterprise, you are limited to using CircleCI 2.0 syntax, which is missing some really useful code reuse features like Commands, Executors and Orbs.
+I was frustrated by these problems on a recent project with complex CI requirements, so, with a little nudge by a colleague who knew the CircleCI CLI inside out, I came up with a solution&hellip;
+        
+        <a class="button is-link" href="https://fieldnotes.tech/circleci-multi-file-config/" style="height:28px">
+          Read more
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <div class="subtitle tags is-6 is-pulled-right">
+        
+        
+<a class="subtitle is-6" href="/tags/make">#make</a>
+
+
+
+  
+  | <a class="subtitle is-6" href="/tags/pragmatism">#pragmatism</a>
+  
+  | <a class="subtitle is-6" href="/tags/bash">#bash</a>
+  
+
+        
+      </div>
+      <h2 class="subtitle is-6">July 4, 2019</h2>
+      <h1 class="title"><a href="https://fieldnotes.tech/how-to-shell-for-compatible-makefiles/">How to SHELL for compatible Makefiles</a></h1>
+      <div class="content">
+        The upshot is if you care about maximum compatibility with different versions of GNU Make, don&rsquo;t use .SHELLFLAGS just put all your args in-line in the SHELL variable, and make sure to always always use -c as your last argument. E.g. for bash in &ldquo;strict mode&rdquo;
+SHELL := /usr/bin/env bash -euo pipefail -c But why? I really care about the out of the box development experience on projects I maintain. For me, this currently means ensuring that you can at least build and run tests on vanilla macOS and GNU/Linux distros, without having to upgrade standard tools like, for example, make.
+        
+        <a class="button is-link" href="https://fieldnotes.tech/how-to-shell-for-compatible-makefiles/" style="height:28px">
+          Read more
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <div class="subtitle tags is-6 is-pulled-right">
+        
+        
+<a class="subtitle is-6" href="/tags/nitpick">#nitpick</a>
+
+
+
+  
+  | <a class="subtitle is-6" href="/tags/readability">#readability</a>
+  
+  | <a class="subtitle is-6" href="/tags/bash">#bash</a>
+  
+
+        
+      </div>
+      <h2 class="subtitle is-6">June 25, 2019</h2>
+      <h1 class="title"><a href="https://fieldnotes.tech/yes-no-boolean-env-vars/">YES/NO Boolean Env Vars</a></h1>
+      <div class="content">
+        I use YES and NO in environment variables to store Boolean values. I have come to the conclusion that this is in some way optimal after trying all the other obvious options and finding that each has readability flaws:
+ 0 and 1 are confusing in POSIX shells like bash, because return 0 and exit 0 usually mean &ldquo;success&rdquo; (the command did not fail) which we think of as truthy. Likewise, 1 or any other non-zero number is treated as failure in these contexts, which intuitively feels falseish.
+        
+        <a class="button is-link" href="https://fieldnotes.tech/yes-no-boolean-env-vars/" style="height:28px">
+          Read more
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <div class="subtitle tags is-6 is-pulled-right">
+        
+        
 <a class="subtitle is-6" href="/tags/hugo">#hugo</a>
 
 
@@ -92,6 +204,29 @@ There are 2 Git repos for this website:
  Source code: github.com/fieldnotes-tech/fieldnotes.tech Rendered static site: github.com/fieldnotes-tech/fieldnotes-tech.github.io  Publishing involves updating the source, and having Hugo generate the static site. To make this easier to use I&rsquo;ve added a Makefile which pulls the rendered site as a submodule in the public/ directory, which is Hugo&rsquo;s default place to write the rendered site.
         
         <a class="button is-link" href="https://fieldnotes.tech/hugo-makefile/" style="height:28px">
+          Read more
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <div class="subtitle tags is-6 is-pulled-right">
+        
+        
+<a class="subtitle is-6" href="/tags/meta">#meta</a>
+
+
+
+        
+      </div>
+      <h2 class="subtitle is-6">March 3, 2019</h2>
+      <h1 class="title"><a href="https://fieldnotes.tech/hello-world/">Hello World</a></h1>
+      <div class="content">
+        Hello world, welcome to fieldnotes.tech!
+Here I intend to keep my notes-to-self, code snippets, musings and other short bits &amp; pieces on the subject of software engineering and tech in general. Most of what I’ll write here will be gleaned from working in the field and solving real issues as they arise. Some of it will be pretty esoteric, rough, unfinished and maybe even controversial or just plain wrong; but all will be in the spirit of earnestly trying to be better at what I do.
+        
+        <a class="button is-link" href="https://fieldnotes.tech/hello-world/" style="height:28px">
           Read more
         </a>
         
