@@ -68,6 +68,35 @@
   <div class="container">
     
     
+    <article>
+      <div class="subtitle tags is-6 is-pulled-right">
+        
+        
+<a class="subtitle is-6" href="/tags/make">#make</a>
+
+
+
+  
+  | <a class="subtitle is-6" href="/tags/pragmatism">#pragmatism</a>
+  
+  | <a class="subtitle is-6" href="/tags/bash">#bash</a>
+  
+
+        
+      </div>
+      <h2 class="subtitle is-6">July 4, 2019</h2>
+      <h1 class="title"><a href="https://fieldnotes.tech/how-to-shell-for-compatible-makefiles/">How to SHELL for compatible Makefiles</a></h1>
+      <div class="content">
+        The upshot is if you care about maximum compatibility with different versions of GNU Make, don&rsquo;t use .SHELLFLAGS just put all your args in-line in the SHELL variable, and make sure to always always use -c as your last argument. E.g. for bash in &ldquo;strict mode&rdquo;
+SHELL := /usr/bin/env bash -euo pipefail -c But why? I really care about the out of the box development experience on projects I maintain. For me, this currently means ensuring that you can at least build and run tests on vanilla macOS and GNU/Linux distros, without having to upgrade standard tools like, for example, make.
+        
+        <a class="button is-link" href="https://fieldnotes.tech/how-to-shell-for-compatible-makefiles/" style="height:28px">
+          Read more
+        </a>
+        
+      </div>
+    </article>
+    
   </div>
 </section>
 <section class="section">
