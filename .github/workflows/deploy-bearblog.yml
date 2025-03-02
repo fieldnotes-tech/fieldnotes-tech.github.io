@@ -1,0 +1,44 @@
+name: Deploy Bear Blog Content
+
+on:
+  release:
+    types: [published]
+  
+  # Optional: Allow manual triggering
+  workflow_dispatch:
+    inputs:
+      release_id:
+        description: 'Release ID to process'
+        required: true
+      target_branch:
+        description: 'Branch to deploy to'
+        required: false
+        default: 'gh-pages'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Determine release ID
+        id: release
+        run: |
+          if [ -n "${{ github.event.inputs.release_id }}" ]; then
+            echo "id=${{ github.event.inputs.release_id }}" >> $GITHUB_OUTPUT
+          else
+            echo "id=${{ github.event.release.id }}" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Deploy Bear Blog Content
+        uses: samsalisbury/bearblog@main
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          release_id: ${{ steps.release.outputs.id }}
+          target_branch: 'gh-pages'
+          content_dir: '/'
+          output_dir: 'public'
